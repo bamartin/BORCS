@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dnuhew8u14qig"]
+
+[ext_resource type="PackedScene" uid="uid://deaaf2axjs6ki" path="res://Levels/level.tscn" id="1_cb8d3"]
+[ext_resource type="PackedScene" uid="uid://b2jowcjmqjft" path="res://Assets/wall.tscn" id="2_5lru4"]
+
+[sub_resource type="PackedScene" id="PackedScene_5lru4"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(1523637013), PackedInt32Array(1523637013), PackedInt32Array(1523637013), PackedInt32Array(1523637013)],
+"names": PackedStringArray("Level_4", "Breakable", "position", "Breakable2", "position", "Breakable3", "position", "Breakable4", "position"),
+"node_count": 5,
+"node_ids": PackedInt32Array(910813582, 1696797510, 1239621106, 632362269, 1439570011),
+"node_paths": [NodePath("./Objects/Breakables"), NodePath("./Objects/Breakables"), NodePath("./Objects/Breakables"), NodePath("./Objects/Breakables")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, 0, 2147483647, 262145, 1, 1, 2, 2, 0, 1073741825, 0, 2147483647, 524291, 3, 1, 4, 4, 0, 1073741826, 0, 2147483647, 786437, 5, 1, 6, 6, 0, 1073741827, 0, 2147483647, 1048583, 7, 1, 8, 8, 0),
+"variants": [ExtResource("1_cb8d3"), ExtResource("2_5lru4"), Vector2(368, 377), ExtResource("2_5lru4"), Vector2(710, 277), ExtResource("2_5lru4"), Vector2(626, 406), ExtResource("2_5lru4"), Vector2(490, 217)],
+"version": 3
+}
+
+[node name="Level_3" unique_id=910813582 instance=ExtResource("1_cb8d3")]
+next_level = SubResource("PackedScene_5lru4")
+
+[node name="Breakable" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="0" unique_id=1696797510 instance=ExtResource("2_5lru4")]
+position = Vector2(253, 92)
+
+[node name="Breakable2" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="1" unique_id=463329353 instance=ExtResource("2_5lru4")]
+position = Vector2(289, 92)
+
+[node name="Breakable3" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="2" unique_id=1989070076 instance=ExtResource("2_5lru4")]
+position = Vector2(325, 92)
+
+[node name="Breakable4" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="3" unique_id=582774754 instance=ExtResource("2_5lru4")]
+position = Vector2(361, 92)
+
+[node name="Breakable5" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="4" unique_id=716547947 instance=ExtResource("2_5lru4")]
+position = Vector2(397, 92)
+
+[node name="Breakable6" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="5" unique_id=2137123389 instance=ExtResource("2_5lru4")]
+position = Vector2(433, 92)
+
+[node name="Breakable7" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="6" unique_id=2033038625 instance=ExtResource("2_5lru4")]
+position = Vector2(469, 92)
+
+[node name="Breakable8" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="7" unique_id=857956144 instance=ExtResource("2_5lru4")]
+position = Vector2(505, 92)
+
+[node name="Breakable9" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="8" unique_id=2076629789 instance=ExtResource("2_5lru4")]
+position = Vector2(540, 92)
+
+[node name="Breakable10" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="9" unique_id=878231474 instance=ExtResource("2_5lru4")]
+position = Vector2(576, 92)
+
+[node name="Breakable11" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="10" unique_id=561532292 instance=ExtResource("2_5lru4")]
+position = Vector2(612, 92)
+
+[node name="Breakable12" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="11" unique_id=531370212 instance=ExtResource("2_5lru4")]
+position = Vector2(648, 92)
+
+[node name="Breakable13" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="12" unique_id=1344377515 instance=ExtResource("2_5lru4")]
+position = Vector2(684, 92)
+
+[node name="Breakable14" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="13" unique_id=708579668 instance=ExtResource("2_5lru4")]
+position = Vector2(720, 92)
+
+[node name="Breakable15" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="14" unique_id=1792900433 instance=ExtResource("2_5lru4")]
+position = Vector2(756, 92)
+
+[node name="Breakable16" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="15" unique_id=1243662993 instance=ExtResource("2_5lru4")]
+position = Vector2(792, 92)
+
+[node name="Breakable17" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="16" unique_id=1250842298 instance=ExtResource("2_5lru4")]
+position = Vector2(828, 92)
+
+[node name="Breakable18" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="17" unique_id=1473584438 instance=ExtResource("2_5lru4")]
+position = Vector2(864, 92)
+
+[node name="Breakable19" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="18" unique_id=330996602 instance=ExtResource("2_5lru4")]
+position = Vector2(900, 92)

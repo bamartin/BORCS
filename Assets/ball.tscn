@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://djsxfkt4tbwrg"]
+
+[ext_resource type="Script" uid="uid://b3og3llaepih6" path="res://Assets/Scripts/ball.gd" id="1_26b58"]
+[ext_resource type="Texture2D" uid="uid://bkhetksgdxm1" path="res://Assets/Sprites/Blocks_Spritesheet.png" id="1_h3lac"]
+[ext_resource type="Script" uid="uid://ctlaa8ei2hppm" path="res://Assets/Scripts/ball_node.gd" id="1_rfvuw"]
+[ext_resource type="PhysicsMaterial" uid="uid://dowy7446cm5gj" path="res://Assets/Materials/ball.tres" id="2_r2fxl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_526b4"]
+radius = 5.38516
+
+[node name="Ball" type="Node2D" unique_id=756490543]
+process_mode = 1
+script = ExtResource("1_rfvuw")
+
+[node name="Ball" type="RigidBody2D" parent="." unique_id=107219380]
+disable_mode = 1
+collision_mask = 61
+physics_material_override = ExtResource("2_r2fxl")
+gravity_scale = 0.0
+custom_integrator = true
+contact_monitor = true
+max_contacts_reported = 10
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_26b58")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=426632497]
+shape = SubResource("CircleShape2D_526b4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=1571738420]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_h3lac")
+region_enabled = true
+region_rect = Rect2(49.3674, 338.328, 21.5831, 21.4032)
+
+[node name="ResetTimer" type="Timer" parent="." unique_id=890158342]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]
+[connection signal="timeout" from="ResetTimer" to="Ball" method="_on_reset_timer_timeout"]

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dxouyomrbffqv"]
+
+[ext_resource type="Script" uid="uid://cytp0tcutirn5" path="res://Assets/Scripts/coin_node.gd" id="1_2hqa8"]
+[ext_resource type="Texture2D" uid="uid://b1gvp6oobovja" path="res://Assets/Sprites/Coin.png" id="1_4jn4t"]
+[ext_resource type="Script" uid="uid://iry73p718rw6" path="res://Assets/Scripts/coin.gd" id="2_h6kom"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2hqa8"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32cjs"]
+radius = 11.0
+
+[node name="Coin" type="Node2D" unique_id=1875423901]
+script = ExtResource("1_2hqa8")
+
+[node name="Coin" type="RigidBody2D" parent="." unique_id=372730535]
+collision_layer = 8
+collision_mask = 61
+physics_material_override = SubResource("PhysicsMaterial_2hqa8")
+gravity_scale = 0.0
+contact_monitor = true
+script = ExtResource("2_h6kom")
+
+[node name="CoinSprite" type="Sprite2D" parent="Coin" unique_id=529030141]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("1_4jn4t")
+
+[node name="CoinCollision" type="CollisionShape2D" parent="Coin" unique_id=120148789]
+shape = SubResource("CircleShape2D_32cjs")
+
+[node name="SlowTimer" type="Timer" parent="." unique_id=1339278286]
+wait_time = 3.0
+one_shot = true

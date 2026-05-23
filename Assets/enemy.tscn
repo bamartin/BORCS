@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bqxloy108koo6"]
+
+[ext_resource type="Script" uid="uid://d38m0vufqg67p" path="res://Assets/Scripts/enemy.gd" id="1_1x66r"]
+[ext_resource type="Script" uid="uid://doh5egisxss6j" path="res://Assets/Scripts/enemy_node.gd" id="1_6tnjp"]
+[ext_resource type="PhysicsMaterial" uid="uid://dy4gdeg8aoqac" path="res://Assets/Materials/enemy.tres" id="2_1aa2w"]
+[ext_resource type="Texture2D" uid="uid://cwqbeih4oosfl" path="res://Assets/Sprites/MicroRoguelikeSprites.png" id="4_pmjn7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xg2h"]
+size = Vector2(21, 20)
+
+[node name="Enemy" type="Node2D" unique_id=638182685]
+process_mode = 1
+script = ExtResource("1_6tnjp")
+
+[node name="Enemy" type="RigidBody2D" parent="." unique_id=213976050]
+collision_layer = 4
+collision_mask = 61
+mass = 5.0
+physics_material_override = ExtResource("2_1aa2w")
+gravity_scale = 0.0
+custom_integrator = true
+contact_monitor = true
+max_contacts_reported = 10
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_1x66r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=1756218585]
+shape = SubResource("RectangleShape2D_0xg2h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy" unique_id=1390354465]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_pmjn7")
+region_enabled = true
+region_rect = Rect2(98.8805, -0.00617909, 8.46902, 8.18434)
+
+[node name="SlowTimer" type="Timer" parent="." unique_id=1414435941]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="Enemy" to="Enemy" method="_on_body_entered"]

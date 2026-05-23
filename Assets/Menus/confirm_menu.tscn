@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dhwsi3niwmgfh"]
+
+[ext_resource type="Texture2D" uid="uid://c3wwbthqokx72" path="res://Assets/Sprites/Blue/Default/button_square_flat.png" id="1_0lfie"]
+[ext_resource type="Script" uid="uid://cp047sh3o0w0x" path="res://Assets/Scripts/confirm_menu.gd" id="1_x88l4"]
+[ext_resource type="LabelSettings" uid="uid://xkwv1ggwle86" path="res://Assets/Menus/PauseLabel.tres" id="2_x88l4"]
+[ext_resource type="Theme" uid="uid://bwx3k28w6edip" path="res://Assets/Menus/Button.tres" id="3_e8pre"]
+
+[node name="ConfirmMenu" type="Control" unique_id=1165883481]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x88l4")
+
+[node name="MenuBackground" type="TextureRect" parent="." unique_id=529952387]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -167.0
+offset_right = 289.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0lfie")
+
+[node name="Label" type="Label" parent="MenuBackground" unique_id=1186781153]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -262.0
+offset_top = 59.0
+offset_right = 285.0
+offset_bottom = 122.0
+grow_horizontal = 2
+text = "Are You Sure?"
+label_settings = ExtResource("2_x88l4")
+
+[node name="Confirm" type="Button" parent="MenuBackground" unique_id=1754879507]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.0
+offset_top = -15.0
+offset_right = 233.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_e8pre")
+text = "Yes, DO IT NOW"
+
+[node name="Cancel" type="Button" parent="MenuBackground" unique_id=964984030]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -269.0
+offset_top = -113.0
+offset_right = 271.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_e8pre")
+text = "On Second Thought, Maybe Not"
+
+[connection signal="button_up" from="MenuBackground/Confirm" to="." method="_on_confirm_button_up"]
+[connection signal="button_up" from="MenuBackground/Cancel" to="." method="_on_cancel_button_up"]

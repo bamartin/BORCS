@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://deaaf2axjs6ki"]
+
+[ext_resource type="Script" uid="uid://b53j43jlo28rw" path="res://Assets/Scripts/level.gd" id="1_b05go"]
+[ext_resource type="PackedScene" uid="uid://2onwhbywy0h3" path="res://Assets/bouncypult.tscn" id="2_cpybw"]
+[ext_resource type="PackedScene" uid="uid://jahpk1306rwm" path="res://Assets/Menus/pause_menu.tscn" id="2_o75ed"]
+[ext_resource type="Texture2D" uid="uid://chhaqxjrsdie6" path="res://Assets/Sprites/Blue/Double/button_rectangle_border.png" id="2_t80w2"]
+[ext_resource type="Script" uid="uid://moc25ucaipos" path="res://Assets/Scripts/level_variables.gd" id="5_2qtp4"]
+[ext_resource type="PackedScene" uid="uid://cxiw7xivxd5g4" path="res://Assets/Menus/HUD.tscn" id="6_j70dh"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_c3oqi"]
+a = Vector2(1152, 0)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wohbf"]
+a = Vector2(0, 648)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_drhtv"]
+a = Vector2(0, 648)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yx47o"]
+b = Vector2(1158, 1)
+
+[node name="Level" type="Node2D" unique_id=910813582]
+process_mode = 3
+script = ExtResource("1_b05go")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=308797655]
+position = Vector2(576, 324)
+
+[node name="Objects" type="CanvasLayer" parent="." unique_id=1115157291]
+
+[node name="Ceiling" type="Node2D" parent="Objects" unique_id=1389352826]
+z_index = 1
+
+[node name="Ceiling" type="StaticBody2D" parent="Objects/Ceiling" unique_id=930460696]
+collision_layer = 16
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Ceiling/Ceiling" unique_id=919776038]
+shape = SubResource("SegmentShape2D_c3oqi")
+
+[node name="Area2D" type="Area2D" parent="Objects/Ceiling" unique_id=1403680308]
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Ceiling/Area2D" unique_id=1748957403]
+shape = SubResource("SegmentShape2D_c3oqi")
+
+[node name="Border_Left" type="Node2D" parent="Objects" unique_id=1593096178]
+z_index = 1
+position = Vector2(230, 0)
+
+[node name="Menu_Left" type="Sprite2D" parent="Objects/Border_Left" unique_id=1370398542]
+position = Vector2(-113, 323.5)
+scale = Vector2(0.604167, 5.05469)
+texture = ExtResource("2_t80w2")
+
+[node name="Border_Left" type="StaticBody2D" parent="Objects/Border_Left" unique_id=213395245]
+collision_layer = 16
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Border_Left/Border_Left" unique_id=588724619]
+shape = SubResource("SegmentShape2D_wohbf")
+
+[node name="Area2D" type="Area2D" parent="Objects/Border_Left" unique_id=1065860147]
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Border_Left/Area2D" unique_id=431046219]
+shape = SubResource("SegmentShape2D_wohbf")
+
+[node name="Border_Right" type="Node2D" parent="Objects" unique_id=120833456]
+z_index = 1
+position = Vector2(922, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Border_Right" unique_id=1145281736]
+position = Vector2(112, 321.5)
+scale = Vector2(0.588542, 5.05469)
+texture = ExtResource("2_t80w2")
+
+[node name="Border_Right" type="StaticBody2D" parent="Objects/Border_Right" unique_id=643642259]
+collision_layer = 16
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Border_Right/Border_Right" unique_id=259206890]
+shape = SubResource("SegmentShape2D_drhtv")
+
+[node name="Area2D" type="Area2D" parent="Objects/Border_Right" unique_id=930702016]
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Border_Right/Area2D" unique_id=1565397433]
+shape = SubResource("SegmentShape2D_drhtv")
+
+[node name="Floor" type="Node2D" parent="Objects" unique_id=1555846019]
+position = Vector2(0, 648)
+
+[node name="Floor" type="Area2D" parent="Objects/Floor" unique_id=2047899783]
+collision_layer = 16
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Floor/Floor" unique_id=1046612835]
+shape = SubResource("SegmentShape2D_yx47o")
+
+[node name="Bouncypult" parent="Objects" unique_id=1891992278 instance=ExtResource("2_cpybw")]
+position = Vector2(576, 548)
+
+[node name="Breakables" type="Node2D" parent="Objects" unique_id=1523637013]
+
+[node name="MenuLayer" type="CanvasLayer" parent="." unique_id=2114733014]
+
+[node name="HUD" parent="MenuLayer" unique_id=642113147 instance=ExtResource("6_j70dh")]
+
+[node name="PauseMenu" parent="MenuLayer" unique_id=1264017077 instance=ExtResource("2_o75ed")]
+visible = false
+z_index = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 575.0
+offset_top = 322.0
+offset_right = 575.0
+offset_bottom = 322.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=157599055]
+layer = 0
+
+[node name="Background" type="TextureRect" parent="Background" unique_id=1181988986]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=1326340284]
+process_mode = 1
+wait_time = 5.0
+autostart = true
+
+[node name="ResetTimer" type="Timer" parent="." unique_id=881916078]
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+
+[node name="LevelVariables" type="Node" parent="." unique_id=1410325381]
+script = ExtResource("5_2qtp4")
+
+[connection signal="body_entered" from="Objects/Floor/Floor" to="." method="_on_floor_body_entered"]
+[connection signal="child_exiting_tree" from="Objects/Breakables" to="." method="_on_breakables_child_exiting_tree"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="spawn_enemy"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://jahpk1306rwm"]
+
+[ext_resource type="Script" uid="uid://fdc2qglnek02" path="res://Assets/Scripts/pause_menu.gd" id="1_alyki"]
+[ext_resource type="Texture2D" uid="uid://c3wwbthqokx72" path="res://Assets/Sprites/Blue/Default/button_square_flat.png" id="1_cjejx"]
+[ext_resource type="LabelSettings" uid="uid://xkwv1ggwle86" path="res://Assets/Menus/PauseLabel.tres" id="2_hdog1"]
+[ext_resource type="Theme" uid="uid://bwx3k28w6edip" path="res://Assets/Menus/Button.tres" id="4_fwfbj"]
+[ext_resource type="PackedScene" uid="uid://ds1dw7887hf8a" path="res://Assets/Menus/ingame_settings.tscn" id="5_4a372"]
+
+[node name="PauseMenu" type="Control" unique_id=1276691343]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_alyki")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=528294474]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -167.0
+offset_right = 289.0
+offset_bottom = 243.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cjejx")
+
+[node name="GamePaused" type="Label" parent="TextureRect" unique_id=647110258]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 27.5
+offset_right = 105.0
+offset_bottom = 54.5
+grow_horizontal = 2
+text = "Game Paused"
+label_settings = ExtResource("2_hdog1")
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="TextureRect" unique_id=1767443175]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 115.0
+offset_right = 125.0
+offset_bottom = 154.0
+grow_horizontal = 2
+theme = ExtResource("4_fwfbj")
+text = "Resume Game"
+
+[node name="Restart" type="Button" parent="TextureRect" unique_id=1185697904]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 165.0
+offset_right = 125.0
+offset_bottom = 204.0
+grow_horizontal = 2
+theme = ExtResource("4_fwfbj")
+text = "Restart"
+
+[node name="Settings" type="Button" parent="TextureRect" unique_id=23894093]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 215.0
+offset_right = 125.0
+offset_bottom = 254.0
+grow_horizontal = 2
+theme = ExtResource("4_fwfbj")
+text = "Settings"
+
+[node name="Main Menu" type="Button" parent="TextureRect" unique_id=1198211877]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.0
+offset_top = 265.0
+offset_right = 128.0
+offset_bottom = 304.0
+grow_horizontal = 2
+theme = ExtResource("4_fwfbj")
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="TextureRect" unique_id=975870933]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 315.0
+offset_right = 125.0
+offset_bottom = 354.0
+grow_horizontal = 2
+theme = ExtResource("4_fwfbj")
+text = "Quit"
+
+[node name="InGame_Settings" parent="." unique_id=1766886534 instance=ExtResource("5_4a372")]
+visible = false
+layout_mode = 1
+
+[connection signal="button_up" from="TextureRect/Resume" to="." method="_on_resume_button_up"]
+[connection signal="button_up" from="TextureRect/Restart" to="." method="_on_restart_button_up"]
+[connection signal="button_up" from="TextureRect/Settings" to="." method="_on_settings_button_up"]
+[connection signal="button_up" from="TextureRect/Main Menu" to="." method="_on_main_menu_button_up"]
+[connection signal="button_up" from="TextureRect/Quit" to="." method="_on_quit_button_up"]

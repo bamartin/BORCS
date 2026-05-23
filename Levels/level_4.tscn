@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d5l3gbya5nhv"]
+
+[ext_resource type="PackedScene" uid="uid://deaaf2axjs6ki" path="res://Levels/level.tscn" id="1_e78ah"]
+[ext_resource type="PackedScene" uid="uid://b2jowcjmqjft" path="res://Assets/wall.tscn" id="2_nsqb1"]
+
+[node name="Level_4" unique_id=910813582 instance=ExtResource("1_e78ah")]
+is_final_level = true
+
+[node name="Breakable" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="0" unique_id=1696797510 instance=ExtResource("2_nsqb1")]
+position = Vector2(368, 377)
+
+[node name="Breakable2" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="1" unique_id=1239621106 instance=ExtResource("2_nsqb1")]
+position = Vector2(710, 277)
+
+[node name="Breakable3" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="2" unique_id=632362269 instance=ExtResource("2_nsqb1")]
+position = Vector2(626, 406)
+
+[node name="Breakable4" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="3" unique_id=1439570011 instance=ExtResource("2_nsqb1")]
+position = Vector2(490, 217)

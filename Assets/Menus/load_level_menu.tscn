@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cvdryjo37shb5"]
+
+[ext_resource type="Script" uid="uid://c0xwp6i0q41gu" path="res://Assets/Scripts/load_level_menu.gd" id="1_bw6c1"]
+[ext_resource type="Texture2D" uid="uid://c3wwbthqokx72" path="res://Assets/Sprites/Blue/Default/button_square_flat.png" id="1_l4dea"]
+[ext_resource type="LabelSettings" uid="uid://xkwv1ggwle86" path="res://Assets/Menus/PauseLabel.tres" id="2_qxp7f"]
+[ext_resource type="Theme" uid="uid://bwx3k28w6edip" path="res://Assets/Menus/Button.tres" id="3_hocpt"]
+
+[node name="LoadLevelMenu" type="Control" unique_id=643824553]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bw6c1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=641964602]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -287.0
+offset_right = 289.0
+offset_bottom = 261.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l4dea")
+
+[node name="LoadLevel" type="Label" parent="TextureRect" unique_id=1160522309]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 27.5
+offset_right = 105.0
+offset_bottom = 54.5
+grow_horizontal = 2
+text = "Load Level"
+label_settings = ExtResource("2_qxp7f")
+horizontal_alignment = 1
+
+[node name="Levels" type="Control" parent="TextureRect" unique_id=1776685083]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -173.0
+offset_right = 235.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="TextureRect" unique_id=1912197608]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -63.0
+offset_right = 168.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_hocpt")
+text = "Back To Main Menu"
+
+[connection signal="button_up" from="TextureRect/Back" to="." method="_on_back_button_up"]

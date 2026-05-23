@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://c7c6f4xb2h0ld"]
+
+[ext_resource type="Script" uid="uid://cx7dse35jqwmw" path="res://Assets/Scripts/main_menu.gd" id="1_8rp2r"]
+[ext_resource type="LabelSettings" uid="uid://xkwv1ggwle86" path="res://Assets/Menus/PauseLabel.tres" id="1_exmke"]
+[ext_resource type="Theme" uid="uid://bwx3k28w6edip" path="res://Assets/Menus/Button.tres" id="2_eqhm1"]
+
+[node name="MainMenu" type="Control" unique_id=246902102]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8rp2r")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1536022168]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=1148185359]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "BORCS!"
+label_settings = ExtResource("1_exmke")
+horizontal_alignment = 1
+
+[node name="New Game" type="Button" parent="TextureRect" unique_id=2059267379]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -94.0
+offset_right = 109.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_eqhm1")
+text = "New Game"
+
+[node name="Load Level" type="Button" parent="TextureRect" unique_id=341349758]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -44.0
+offset_right = 109.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_eqhm1")
+text = "Load Level"
+
+[node name="Settings" type="Button" parent="TextureRect" unique_id=615882234]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = 6.0
+offset_right = 109.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_eqhm1")
+text = "Settings"
+
+[node name="Quit" type="Button" parent="TextureRect" unique_id=495718782]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = 56.0
+offset_right = 109.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_eqhm1")
+text = "Quit"
+
+[connection signal="button_up" from="TextureRect/New Game" to="." method="_on_new_game_button_up"]
+[connection signal="button_up" from="TextureRect/Load Level" to="." method="_on_load_level_button_up"]
+[connection signal="button_up" from="TextureRect/Settings" to="." method="_on_settings_button_up"]
+[connection signal="button_up" from="TextureRect/Quit" to="." method="_on_quit_button_up"]

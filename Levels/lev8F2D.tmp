@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://deaaf2axjs6ki"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/level.gd" id="1_b05go"]
+[ext_resource type="PackedScene" uid="uid://jahpk1306rwm" path="res://Assets/Menus/pause_menu.tscn" id="2_o75ed"]
+[ext_resource type="PackedScene" uid="uid://cko0tgkniarag" path="res://Assets/bouncypult.tscn" id="3_bho1l"]
+[ext_resource type="PackedScene" uid="uid://cxiw7xivxd5g4" path="res://Assets/Menus/text_overlay.tscn" id="6_j70dh"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_c3oqi"]
+a = Vector2(1152, 0)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wohbf"]
+a = Vector2(0, 648)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_drhtv"]
+a = Vector2(0, 648)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yx47o"]
+b = Vector2(1158, 1)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_b05go")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Objects" type="CanvasLayer" parent="."]
+
+[node name="Ceiling" type="Sprite2D" parent="Objects"]
+z_index = 1
+
+[node name="Ceiling" type="StaticBody2D" parent="Objects/Ceiling"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Ceiling/Ceiling"]
+shape = SubResource("SegmentShape2D_c3oqi")
+
+[node name="Wall_Left" type="Sprite2D" parent="Objects"]
+z_index = 1
+
+[node name="Wall_Left" type="StaticBody2D" parent="Objects/Wall_Left"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Wall_Left/Wall_Left"]
+shape = SubResource("SegmentShape2D_wohbf")
+
+[node name="Wall_Right" type="Sprite2D" parent="Objects"]
+z_index = 1
+
+[node name="Wall_Right" type="StaticBody2D" parent="Objects/Wall_Right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Wall_Right/Wall_Right"]
+position = Vector2(1152, 0)
+shape = SubResource("SegmentShape2D_drhtv")
+
+[node name="Floor" type="Sprite2D" parent="Objects"]
+position = Vector2(0, 648)
+
+[node name="Floor" type="Area2D" parent="Objects/Floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Floor/Floor"]
+shape = SubResource("SegmentShape2D_yx47o")
+
+[node name="Bouncypult" parent="Objects" instance=ExtResource("3_bho1l")]
+position = Vector2(568, 552)
+
+[node name="Blocks" type="Node2D" parent="Objects"]
+
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="TextOverlay" parent="MenuLayer" instance=ExtResource("6_j70dh")]
+
+[node name="PauseMenu" parent="MenuLayer" instance=ExtResource("2_o75ed")]
+visible = false
+z_index = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 575.0
+offset_top = 322.0
+offset_right = 575.0
+offset_bottom = 322.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="body_entered" from="Objects/Floor/Floor" to="." method="_on_floor_body_entered"]
+[connection signal="child_exiting_tree" from="Objects/Blocks" to="." method="_on_blocks_child_exiting_tree"]
