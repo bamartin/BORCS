@@ -5,6 +5,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await ConfigFileHandler.load_save_file()
 	var level_avail = ConfigFileHandler.load_level_avail()
 	var i = 1
 	var button_offset = 0
@@ -12,7 +13,6 @@ func _ready() -> void:
 	#Use array pulled from config file to show the level selection buttons
 	for level in level_avail:
 		if level_avail[level]:
-			print("Retrieved: " + str(level) + " " + str(level_avail[level]))
 			var button = Button.new()
 			button.pressed.connect(load_level.bind(i))
 			button.text = "Level " + str(i)

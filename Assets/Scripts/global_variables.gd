@@ -9,13 +9,15 @@ var current_scene = ""
 var breakables_remaining = 0
 var level_begin = false
 var current_level_num = 0
+var latest_level_num = 0
 var resetting_level = false
 var reloading = false
 var ball_launched = false
 var init_ball_pos = Vector2(0,0)
+var active_save = ""
 
 func _ready() -> void:
-	reset_variables()
+	pass
 
 func _process(_delta):
 	pass
@@ -32,8 +34,7 @@ func reset_variables():
 	level_begin = false
 
 func save_player_stats():
-	ConfigFileHandler.save_player_score(player_score)
-	ConfigFileHandler.save_coins(player_coins)
+	ConfigFileHandler.save_player_stats()
 
 func load_player_stats():
 	ConfigFileHandler.load_player_stats()

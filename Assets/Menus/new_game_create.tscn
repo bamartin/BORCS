@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://d0w8lofewo88q"]
+
+[ext_resource type="Script" uid="uid://d2moqhspyneav" path="res://Assets/Scripts/new_game_create.gd" id="1_k8rh4"]
+[ext_resource type="Texture2D" uid="uid://dpp2ld6vq1lfx" path="res://Assets/Sprites/Blue/Default/button_square_border.png" id="2_xxuxh"]
+[ext_resource type="LabelSettings" uid="uid://ba5omq3mos5uf" path="res://Assets/Fonts/UI_Label.tres" id="3_72ghl"]
+[ext_resource type="Texture2D" uid="uid://buduswebgnpf1" path="res://Assets/Sprites/Blue/Default/button_square_depth_gloss.png" id="4_lb5cm"]
+
+[node name="NewGameCreate" type="Control" unique_id=1786121942]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k8rh4")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2124179357]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.5
+offset_top = -32.0
+offset_right = 182.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xxuxh")
+
+[node name="Name" type="Label" parent="TextureRect" unique_id=416329065]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -91.0
+offset_right = 181.0
+offset_bottom = -31.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "New Save Name"
+label_settings = ExtResource("3_72ghl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SaveGameName" type="LineEdit" parent="TextureRect" unique_id=710179240]
+layout_mode = 0
+offset_left = 35.5
+offset_top = 5.0
+offset_right = 331.5
+offset_bottom = 59.0
+
+[node name="OK" type="Button" parent="TextureRect" unique_id=345869981]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = 34.0
+offset_right = 32.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "OK"
+icon = ExtResource("4_lb5cm")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="button_up" from="TextureRect/OK" to="." method="_on_ok_button_up"]

@@ -38,21 +38,23 @@ func _ready() -> void:
 	GlobalVariables.breakables_remaining = breakables_in_level
 	hud.update_stats()
 	ball_init()
+	
 	hud.show_ready()
 	await get_tree().create_timer(1).timeout
 	hud.hide_ready()
-	hud.show_begin()
-	await get_tree().create_timer(.5).timeout
-	hud.hide_begin()
 	
 	#Set level variables
 	GlobalVariables.load_player_stats()
-	#GlobalVariables.player_health = GlobalVariables.player_max_health
+	GlobalVariables.player_health = GlobalVariables.player_max_health
 	GlobalVariables.level_begin = true
 	GlobalVariables.ball_launched = false
 	GlobalVariables.resetting_level = false
 	GlobalVariables.reloading = false
 	GlobalVariables.resume_game()
+	
+	hud.show_begin()
+	await get_tree().create_timer(.5).timeout
+	hud.hide_begin()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

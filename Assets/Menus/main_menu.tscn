@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8rp2r")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1536022168]
+[node name="MainMenu" type="TextureRect" parent="." unique_id=1536022168]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="TextureRect" unique_id=1148185359]
+[node name="Label" type="Label" parent="MainMenu" unique_id=1148185359]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -32,7 +32,24 @@ text = "BORCS!"
 label_settings = ExtResource("1_exmke")
 horizontal_alignment = 1
 
-[node name="New Game" type="Button" parent="TextureRect" unique_id=2059267379]
+[node name="Continue" type="Button" parent="MainMenu" unique_id=1912837508]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -144.0
+offset_right = 109.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_eqhm1")
+text = "Continue"
+
+[node name="New Game" type="Button" parent="MainMenu" unique_id=2059267379]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -48,7 +65,7 @@ grow_vertical = 2
 theme = ExtResource("2_eqhm1")
 text = "New Game"
 
-[node name="Load Level" type="Button" parent="TextureRect" unique_id=341349758]
+[node name="Load Game" type="Button" parent="MainMenu" unique_id=442750814]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -62,9 +79,9 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_eqhm1")
-text = "Load Level"
+text = "Load Game"
 
-[node name="Settings" type="Button" parent="TextureRect" unique_id=615882234]
+[node name="Load Level" type="Button" parent="MainMenu" unique_id=341349758]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -78,9 +95,9 @@ offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_eqhm1")
-text = "Settings"
+text = "Load Level"
 
-[node name="Quit" type="Button" parent="TextureRect" unique_id=495718782]
+[node name="Settings" type="Button" parent="MainMenu" unique_id=615882234]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,9 +111,27 @@ offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_eqhm1")
+text = "Settings"
+
+[node name="Quit" type="Button" parent="MainMenu" unique_id=495718782]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = 106.0
+offset_right = 109.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_eqhm1")
 text = "Quit"
 
-[connection signal="button_up" from="TextureRect/New Game" to="." method="_on_new_game_button_up"]
-[connection signal="button_up" from="TextureRect/Load Level" to="." method="_on_load_level_button_up"]
-[connection signal="button_up" from="TextureRect/Settings" to="." method="_on_settings_button_up"]
-[connection signal="button_up" from="TextureRect/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="MainMenu/Continue" to="." method="_on_continue_button_up"]
+[connection signal="button_up" from="MainMenu/New Game" to="." method="_on_new_game_button_up"]
+[connection signal="button_up" from="MainMenu/Load Game" to="." method="_on_load_game_button_up"]
+[connection signal="button_up" from="MainMenu/Load Level" to="." method="_on_load_level_button_up"]
+[connection signal="button_up" from="MainMenu/Settings" to="." method="_on_settings_button_up"]
+[connection signal="button_up" from="MainMenu/Quit" to="." method="_on_quit_button_up"]

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://c4wtl27q27mwh"]
+
+[ext_resource type="Script" uid="uid://brmnyvw5gdu4f" path="res://Assets/Scripts/load_game.gd" id="1_1k0ds"]
+[ext_resource type="Texture2D" uid="uid://c3wwbthqokx72" path="res://Assets/Sprites/Blue/Default/button_square_flat.png" id="1_c68we"]
+[ext_resource type="LabelSettings" uid="uid://xkwv1ggwle86" path="res://Assets/Menus/PauseLabel.tres" id="3_jxhu8"]
+[ext_resource type="Theme" uid="uid://bwx3k28w6edip" path="res://Assets/Menus/Button.tres" id="4_fsa13"]
+
+[node name="LoadGame" type="Control" unique_id=205401509]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1k0ds")
+
+[node name="LoadGameBackground" type="TextureRect" parent="." unique_id=1724011798]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -274.0
+offset_right = 289.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_c68we")
+
+[node name="Label" type="Label" parent="LoadGameBackground" unique_id=359092583]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.0
+offset_top = 40.0
+offset_right = 1.0
+offset_bottom = 103.0
+grow_horizontal = 2
+text = "Load Game"
+label_settings = ExtResource("3_jxhu8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Games" type="Control" parent="LoadGameBackground" unique_id=1599264473]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -173.0
+offset_right = 235.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="LoadGameBackground" unique_id=2044491169]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -63.0
+offset_right = 168.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_fsa13")
+text = "Back To Main Menu"
+
+[connection signal="button_up" from="LoadGameBackground/Back" to="." method="_on_back_button_up"]
