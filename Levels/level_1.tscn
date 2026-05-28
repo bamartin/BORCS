@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://deaaf2axjs6ki" path="res://Levels/level.tscn" id="1_khaxp"]
 [ext_resource type="PackedScene" uid="uid://dnuhew8u14qig" path="res://Levels/level_3.tscn" id="2_3mhv4"]
-[ext_resource type="PackedScene" uid="uid://b2jowcjmqjft" path="res://Assets/wall.tscn" id="2_ysud4"]
+[ext_resource type="PackedScene" uid="uid://b2jowcjmqjft" path="res://Assets/breakable.tscn" id="2_ysud4"]
 
 [sub_resource type="PackedScene" id="PackedScene_rf6l5"]
 _bundled = {
@@ -24,7 +24,10 @@ _bundled = {
 next_level = SubResource("PackedScene_rf6l5")
 
 [node name="Breakable4" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="0" unique_id=1856090285 instance=ExtResource("2_ysud4")]
-position = Vector2(569, 374)
+position = Vector2(570, 370)
+
+[node name="Breakable5" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="1" unique_id=1696797510 instance=ExtResource("2_ysud4")]
+position = Vector2(570, 355)
 
 [node name="LevelVariables" parent="." index="6" unique_id=1410325381]
 lvl_name = "Level 1"

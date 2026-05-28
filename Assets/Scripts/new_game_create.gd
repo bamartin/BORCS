@@ -20,4 +20,5 @@ func _on_ok_button_up() -> void:
 		game_named.emit()
 		queue_free()
 	else:
-		print("Please enter a name for your save")
+		GlobalVariables.error_popup("Please enter a name for your save")
+		

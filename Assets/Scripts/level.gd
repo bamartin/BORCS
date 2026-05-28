@@ -10,6 +10,7 @@ extends Node2D
 @onready var enemy_obj: PackedScene = preload("res://Assets/enemy.tscn")
 @onready var coin_obj: PackedScene = preload("res://Assets/coin.tscn")
 @onready var reset_timer: Timer = $ResetTimer
+@onready var level_music: AudioStreamPlayer2D = $LevelMusic
 
 var ball : Node2D
 
@@ -32,6 +33,11 @@ func _ready() -> void:
 	
 	#Once you start a level it becomes available in level selection
 	ConfigFileHandler.save_level_avail("level_" + str(GlobalVariables.current_level_num), true)
+	
+	#Set music volume
+	ConfigFileHandler.load_sound_settings()
+	level_music.volume_linear = (level_music.volume_linear/100) * GlobalVariables.master_vol
+	level_music.volume_linear = (level_music.volume_linear/100) * GlobalVariables.music_vol
 	
 	#Set initial level variables
 	var breakables_in_level = breakables.get_child_count()
@@ -64,6 +70,7 @@ func _process(_delta):
 			PauseMenu()
 	elif Input.is_action_just_pressed("Launch") and not GlobalVariables.ball_launched:
 		ball_launch()
+	
 
 func PauseMenu():
 	if not get_tree().paused:
@@ -73,6 +80,7 @@ func PauseMenu():
 	else:
 		GlobalVariables.resume_game()
 		pause_menu.visible = false
+		update_sound_settings()
 		print("Unpause from key press")
 
 func _on_breakables_child_exiting_tree(node: Node) -> void:
@@ -165,3 +173,12 @@ func spawn_enemy():
 	var enemy = enemy_obj.instantiate()
 	objects_node.add_child(enemy)
 	print("Enemy created")
+
+
+func _on_level_music_finished() -> void:
+	level_music.play()
+
+func update_sound_settings():
+	GlobalVariables.update_sound_settings()
+	level_music.volume_linear = (level_music.volume/100) * GlobalVariables.master_vol
+	level_music.volume_linear = (level_music.volume/100) * GlobalVariables.music_vol

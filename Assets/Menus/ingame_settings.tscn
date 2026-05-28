@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c3wwbthqokx72" path="res://Assets/Sprites/Blue/Default/button_square_flat.png" id="2_a8ocs"]
 [ext_resource type="LabelSettings" uid="uid://xkwv1ggwle86" path="res://Assets/Menus/PauseLabel.tres" id="3_dgbi4"]
 [ext_resource type="Theme" uid="uid://bwx3k28w6edip" path="res://Assets/Menus/Button.tres" id="4_5g8uh"]
-[ext_resource type="PackedScene" uid="uid://dhwsi3niwmgfh" path="res://Assets/Menus/confirm_menu.tscn" id="5_5gbq8"]
 
 [node name="InGame_Settings" type="Control" unique_id=1766886534]
 process_mode = 3
@@ -43,6 +42,22 @@ grow_horizontal = 2
 text = "Settings"
 label_settings = ExtResource("3_dgbi4")
 
+[node name="Sound" type="Button" parent="MenuBackground" unique_id=1005147327]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -80.0
+offset_right = 148.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_5g8uh")
+text = "Sound Settings"
+
 [node name="BackButton" type="Button" parent="MenuBackground" unique_id=1860893882]
 layout_mode = 1
 anchors_preset = 7
@@ -59,9 +74,5 @@ grow_vertical = 0
 theme = ExtResource("4_5g8uh")
 text = "Back"
 
-[node name="ConfirmMenu" parent="." unique_id=1165883481 instance=ExtResource("5_5gbq8")]
-visible = false
-layout_mode = 1
-
+[connection signal="button_up" from="MenuBackground/Sound" to="." method="_on_sound_button_up"]
 [connection signal="button_up" from="MenuBackground/BackButton" to="." method="_on_back_button_up"]
-[connection signal="confirmed" from="ConfirmMenu" to="." method="_on_confirm_menu_confirmed"]

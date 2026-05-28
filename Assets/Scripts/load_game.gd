@@ -18,7 +18,12 @@ func _ready() -> void:
 				var button = Button.new()
 				button.pressed.connect(load_game.bind(save_file))
 				button.text = str(save_file.left(-4))
-				button.theme = load("res://Assets/Menus/Button.tres")
+				if(str(save_file.left(-4)) == GlobalVariables.active_save):
+					print("Active save found as: " + GlobalVariables.active_save)
+					button.theme = load("res://Assets/Menus/Active_Save.tres")
+				else:
+					print("Non-active save found")
+					button.theme = load("res://Assets/Menus/Button.tres")
 				button.position = Vector2(160, button_offset) #In future make this a relative number
 				button_offset += 50 #In future make this a relative number
 				games.add_child(button)

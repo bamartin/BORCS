@@ -1,26 +1,11 @@
 [gd_scene format=3 uid="uid://dnuhew8u14qig"]
 
 [ext_resource type="PackedScene" uid="uid://deaaf2axjs6ki" path="res://Levels/level.tscn" id="1_cb8d3"]
-[ext_resource type="PackedScene" uid="uid://b2jowcjmqjft" path="res://Assets/wall.tscn" id="2_5lru4"]
-
-[sub_resource type="PackedScene" id="PackedScene_5lru4"]
-_bundled = {
-"base_scene": 0,
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"id_paths": [PackedInt32Array(1523637013), PackedInt32Array(1523637013), PackedInt32Array(1523637013), PackedInt32Array(1523637013)],
-"names": PackedStringArray("Level_4", "Breakable", "position", "Breakable2", "position", "Breakable3", "position", "Breakable4", "position"),
-"node_count": 5,
-"node_ids": PackedInt32Array(910813582, 1696797510, 1239621106, 632362269, 1439570011),
-"node_paths": [NodePath("./Objects/Breakables"), NodePath("./Objects/Breakables"), NodePath("./Objects/Breakables"), NodePath("./Objects/Breakables")],
-"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, 0, 2147483647, 262145, 1, 1, 2, 2, 0, 1073741825, 0, 2147483647, 524291, 3, 1, 4, 4, 0, 1073741826, 0, 2147483647, 786437, 5, 1, 6, 6, 0, 1073741827, 0, 2147483647, 1048583, 7, 1, 8, 8, 0),
-"variants": [ExtResource("1_cb8d3"), ExtResource("2_5lru4"), Vector2(368, 377), ExtResource("2_5lru4"), Vector2(710, 277), ExtResource("2_5lru4"), Vector2(626, 406), ExtResource("2_5lru4"), Vector2(490, 217)],
-"version": 3
-}
+[ext_resource type="PackedScene" uid="uid://b2jowcjmqjft" path="res://Assets/breakable.tscn" id="2_5lru4"]
+[ext_resource type="PackedScene" uid="uid://d5l3gbya5nhv" path="res://Levels/level_4.tscn" id="2_ej5lj"]
 
 [node name="Level_3" unique_id=910813582 instance=ExtResource("1_cb8d3")]
-next_level = SubResource("PackedScene_5lru4")
+next_level = ExtResource("2_ej5lj")
 
 [node name="Breakable" parent="Objects/Breakables" parent_id_path=PackedInt32Array(1523637013) index="0" unique_id=1696797510 instance=ExtResource("2_5lru4")]
 position = Vector2(253, 92)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d5l3gbya5nhv"]
 
 [ext_resource type="PackedScene" uid="uid://deaaf2axjs6ki" path="res://Levels/level.tscn" id="1_e78ah"]
-[ext_resource type="PackedScene" uid="uid://b2jowcjmqjft" path="res://Assets/wall.tscn" id="2_nsqb1"]
+[ext_resource type="PackedScene" uid="uid://b2jowcjmqjft" path="res://Assets/breakable.tscn" id="2_nsqb1"]
 
 [node name="Level_4" unique_id=910813582 instance=ExtResource("1_e78ah")]
 is_final_level = true

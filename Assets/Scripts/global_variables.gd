@@ -1,10 +1,21 @@
 extends Node
 
+@onready var error_obj: PackedScene = preload("res://Assets/Menus/error_message.tscn")
+
+#Config var
 var mouse_moves_bouncypult: bool
+var active_save = ""
+var master_vol = 100
+var sound_effects_vol = 100
+var music_vol = 100
+
+#Player stat var
 var player_score = 0
 var player_health = 100
 var player_max_health = 100
 var player_coins = 0
+
+#Level var
 var current_scene = ""
 var breakables_remaining = 0
 var level_begin = false
@@ -14,7 +25,6 @@ var resetting_level = false
 var reloading = false
 var ball_launched = false
 var init_ball_pos = Vector2(0,0)
-var active_save = ""
 
 func _ready() -> void:
 	pass
@@ -74,3 +84,18 @@ func get_player_health():
 
 func set_player_health(health):
 	player_health = health
+
+func error_popup(error_text):
+	var error = error_obj.instantiate()
+	get_parent().add_child(error)
+	error.set_error_message(error_text)
+
+func update_sound_settings():
+	var sound_settings = ConfigFileHandler.load_sound_settings()
+	for key in sound_settings:
+		if key == "master_vol":
+			master_vol = sound_settings[key]
+		elif key == "sound_effects_vol":
+			sound_effects_vol = sound_settings[key]
+		elif key == "music_vol":
+			music_vol = sound_settings[key]

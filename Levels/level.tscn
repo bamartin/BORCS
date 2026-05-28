@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://chhaqxjrsdie6" path="res://Assets/Sprites/Blue/Double/button_rectangle_border.png" id="2_t80w2"]
 [ext_resource type="Script" uid="uid://moc25ucaipos" path="res://Assets/Scripts/level_variables.gd" id="5_2qtp4"]
 [ext_resource type="PackedScene" uid="uid://cxiw7xivxd5g4" path="res://Assets/Menus/HUD.tscn" id="6_j70dh"]
+[ext_resource type="AudioStream" uid="uid://b171tceq4kj83" path="res://Assets/Sounds/770560__hocuspocuz__skyrim-tribute-the-winds-of-gjallarhorn.wav" id="7_8a2b0"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_c3oqi"]
 a = Vector2(1152, 0)
@@ -146,7 +147,12 @@ one_shot = true
 [node name="LevelVariables" type="Node" parent="." unique_id=1410325381]
 script = ExtResource("5_2qtp4")
 
+[node name="LevelMusic" type="AudioStreamPlayer2D" parent="." unique_id=608203643]
+stream = ExtResource("7_8a2b0")
+autoplay = true
+
 [connection signal="body_entered" from="Objects/Floor/Floor" to="." method="_on_floor_body_entered"]
 [connection signal="child_exiting_tree" from="Objects/Breakables" to="." method="_on_breakables_child_exiting_tree"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="spawn_enemy"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
+[connection signal="finished" from="LevelMusic" to="." method="_on_level_music_finished"]

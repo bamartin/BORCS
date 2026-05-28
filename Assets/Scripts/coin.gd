@@ -28,5 +28,13 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 		linear_velocity.y = (linear_velocity.y/abs(linear_velocity.y)) * max_speed
 
 func delete_coin():
-	print("Deleting coin object")
+	print("Deleting coin")
 	get_parent().queue_free()
+
+
+func _on_slow_timer_timeout() -> void:
+	print("Coin speed too slow")
+	delete_coin()
+
+func update_sound_settings():
+	GlobalVariables.update_sound_settings()

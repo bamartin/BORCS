@@ -17,8 +17,14 @@ func _ready() -> void:
 	
 	#Check if config file exists, if not then create with default values
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):
+		#Keybinding configurations
 		config.set_value("keybinding", "slide_left", "A")
 		config.set_value("keybinding", "slide_right", "D")
+		
+		#Sound configurations
+		config.set_value("sound_settings", "master_vol", 100)
+		config.set_value("sound_settings", "sound_effects_vol", 100)
+		config.set_value("sound_settings", "music_vol", 100)
 		
 		#Set save file settings
 		config.set_value("save_data", "active_save", GlobalVariables.active_save)
@@ -48,12 +54,10 @@ func create_save_file(save_game_name):
 	if save_game_name:
 		GlobalVariables.active_save = save_game_name
 		update_save_file_path()
-		config.set_value("save_data", "active_save", GlobalVariables.active_save)
 		save.save(SAVE_FILE_PATH)
 	else:
 		GlobalVariables.active_save = "new_game"
 		update_save_file_path()
-		config.set_value("save_data", "active_save", GlobalVariables.active_save)
 		save.save(SAVE_FILE_PATH)
 	
 	config.save(SETTINGS_FILE_PATH)
@@ -61,11 +65,10 @@ func create_save_file(save_game_name):
 func load_save_file():
 	update_save_file_path()
 	if FileAccess.file_exists(SAVE_FILE_PATH):
-		print("Save file exists: " + GlobalVariables.active_save)
 		config.set_value("save_data", "active_save", GlobalVariables.active_save)
 		save.load(SAVE_FILE_PATH)
+		config.save(SETTINGS_FILE_PATH)
 	else:
-		print("Save file doesn't exist, using defaults")
 		save.set_value("player_stats", "coins", 0)
 		save.set_value("player_stats", "score", 0)
 		save.set_value("player_stats", "health", 100)
@@ -82,10 +85,20 @@ func load_keybinding_settings():
 	
 	return keybind_settings
 
+func save_sound_settings(key: String, value):
+	config.set_value("sound_settings", key, value)
+	config.save(SETTINGS_FILE_PATH)
+
+func load_sound_settings():
+	var sound_settings = {}
+	for key in config.get_section_keys("sound_settings"):
+		sound_settings[key] = config.get_value("sound_settings", key)
+	
+	return sound_settings
+
 func save_level_avail(key: String, value):
 	save.set_value("level_avail", key, value)	
 	save.save(SAVE_FILE_PATH)
-
 
 func load_level_avail():
 	var level_avail = {}

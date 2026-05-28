@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://doh5egisxss6j" path="res://Assets/Scripts/enemy_node.gd" id="1_6tnjp"]
 [ext_resource type="PhysicsMaterial" uid="uid://dy4gdeg8aoqac" path="res://Assets/Materials/enemy.tres" id="2_1aa2w"]
 [ext_resource type="Texture2D" uid="uid://cwqbeih4oosfl" path="res://Assets/Sprites/MicroRoguelikeSprites.png" id="4_pmjn7"]
+[ext_resource type="AudioStream" uid="uid://lar7rw5qoph1" path="res://Assets/Sounds/800984__sadiquecat__hurt-oof.wav" id="5_w431v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xg2h"]
 size = Vector2(21, 20)
@@ -34,8 +35,12 @@ texture = ExtResource("4_pmjn7")
 region_enabled = true
 region_rect = Rect2(98.8805, -0.00617909, 8.46902, 8.18434)
 
+[node name="EnemyBounceSound" type="AudioStreamPlayer2D" parent="Enemy" unique_id=2027381626]
+stream = ExtResource("5_w431v")
+
 [node name="SlowTimer" type="Timer" parent="." unique_id=1414435941]
 wait_time = 3.0
 one_shot = true
 
 [connection signal="body_entered" from="Enemy" to="Enemy" method="_on_body_entered"]
+[connection signal="timeout" from="SlowTimer" to="Enemy" method="_on_slow_timer_timeout"]

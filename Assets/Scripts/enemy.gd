@@ -8,6 +8,7 @@ extends RigidBody2D
 @export var max_speed = 500
 
 @onready var slow_timer: Timer = $"../SlowTimer"
+@onready var enemy_bounce_sound: AudioStreamPlayer2D = $EnemyBounceSound
 
 var on_screen = false
 
@@ -16,6 +17,9 @@ func _ready() -> void:
 	linear_velocity = Vector2(SPEED_X, SPEED_Y)
 	position = Vector2(randi_range(260,840), 0) #Randomize enemy spawn location at top of screen
 	#position = Vector2(550, 0) #Sets enemy spawn to center screen every time. For testing purposes only
+	
+	#Set sound effects volume
+	update_sound_settings()
 
 func _process(_delta):
 	if not get_tree().paused:
@@ -37,12 +41,24 @@ func delete_enemy(points):
 	get_parent().queue_free()
 
 func _on_body_entered(body: Node) -> void:
-	if body is Wall:
+	update_sound_settings()
+	enemy_bounce_sound.play()
+	if body is Breakable:
 		print("Enemy y-pos: " + str(global_position.y))
 		print("Breakable y-pos: " + str(body.get_y()))
 		if global_position.y < body.get_y():
 			print("Enemy shoves breakable")
-			body.shove()
+			body.shove(10)
 		else:
 			print("Enemy Hit Breakable")
 			body.break_object(1)
+
+
+func _on_slow_timer_timeout() -> void:
+	print("Enemy speed too slow, deleting enemy, no points awarded")
+	delete_enemy(0)
+
+func update_sound_settings():
+	GlobalVariables.update_sound_settings()
+	enemy_bounce_sound.volume_linear = (enemy_bounce_sound.volume_linear/100) * GlobalVariables.master_vol
+	enemy_bounce_sound.volume_linear = (enemy_bounce_sound.volume_linear/100) * GlobalVariables.sound_effects_vol

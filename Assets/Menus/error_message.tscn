@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dld41dp417qwt"]
+
+[ext_resource type="Script" uid="uid://og8yao3bdjqo" path="res://Assets/Scripts/error_message.gd" id="1_uhjrb"]
+[ext_resource type="Texture2D" uid="uid://2yeckyyh3gfj" path="res://Assets/Sprites/Blue/Default/button_rectangle_depth_flat.png" id="2_fe5p8"]
+[ext_resource type="LabelSettings" uid="uid://xkwv1ggwle86" path="res://Assets/Menus/PauseLabel.tres" id="3_qcxau"]
+[ext_resource type="Theme" uid="uid://bwx3k28w6edip" path="res://Assets/Menus/Button.tres" id="4_qcxau"]
+
+[node name="ErrorMessage" type="Control" unique_id=1474809546]
+process_mode = 3
+top_level = true
+z_index = 100
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uhjrb")
+
+[node name="ErrorPopUp" type="TextureRect" parent="." unique_id=9607165]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -145.25
+offset_right = 204.0
+offset_bottom = 145.25
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_behavior_recursive = 2
+mouse_force_pass_scroll_events = false
+texture = ExtResource("2_fe5p8")
+
+[node name="ErrorTitle" type="Label" parent="ErrorPopUp" unique_id=763933014]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.5
+offset_bottom = 33.5
+grow_horizontal = 2
+text = "Error"
+label_settings = ExtResource("3_qcxau")
+horizontal_alignment = 1
+
+[node name="ErrorMessage" type="Label" parent="ErrorPopUp" unique_id=885990675]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 85.25
+offset_right = -5.0
+offset_bottom = -43.25
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unknown Error"
+
+[node name="Acknowledge_btn" type="Button" parent="ErrorPopUp" unique_id=938131485]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -39.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_qcxau")
+text = "Acknowledge Error"
+
+[connection signal="button_up" from="ErrorPopUp/Acknowledge_btn" to="." method="_on_acknowledge_btn_button_up"]

@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://dxvm1iikupkv3"]
+
+[ext_resource type="FontFile" uid="uid://2xsj01ovwlm4" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="1_egmpc"]
+
+[resource]
+default_font = ExtResource("1_egmpc")
+default_font_size = 27
+Button/colors/font_color = Color(0.8745098, 0, 0, 1)

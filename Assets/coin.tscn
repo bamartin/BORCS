@@ -32,3 +32,5 @@ shape = SubResource("CircleShape2D_32cjs")
 [node name="SlowTimer" type="Timer" parent="." unique_id=1339278286]
 wait_time = 3.0
 one_shot = true
+
+[connection signal="timeout" from="SlowTimer" to="Coin" method="_on_slow_timer_timeout"]
