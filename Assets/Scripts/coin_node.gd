@@ -24,3 +24,7 @@ func get_max_speed():
 
 func set_max_speed(speed):
 	coin.max_speed = speed
+
+func update_sound_settings():
+	if coin:
+		coin.update_sound_settings()

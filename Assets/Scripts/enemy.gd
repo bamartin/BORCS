@@ -11,6 +11,7 @@ extends RigidBody2D
 @onready var enemy_bounce_sound: AudioStreamPlayer2D = $EnemyBounceSound
 
 var on_screen = false
+var entering_screen = true
 
 func _ready() -> void:
 	# Set velocity of enemy
@@ -41,17 +42,21 @@ func delete_enemy(points):
 	get_parent().queue_free()
 
 func _on_body_entered(body: Node) -> void:
-	update_sound_settings()
-	enemy_bounce_sound.play()
-	if body is Breakable:
-		print("Enemy y-pos: " + str(global_position.y))
-		print("Breakable y-pos: " + str(body.get_y()))
-		if global_position.y < body.get_y():
-			print("Enemy shoves breakable")
-			body.shove(10)
-		else:
-			print("Enemy Hit Breakable")
-			body.break_object(1)
+	if entering_screen and body.name == "Ceiling":
+		print("Collided with ceiling during entrance, don't play sound")
+	else:
+		print("Collision, enter_screen == false or body is not Ceiling")
+		update_sound_settings()
+		enemy_bounce_sound.play()
+		if body is Breakable:
+			print("Enemy y-pos: " + str(global_position.y))
+			print("Breakable y-pos: " + str(body.get_y()))
+			if global_position.y < body.get_y():
+				print("Enemy shoves breakable")
+				body.shove(10)
+			else:
+				print("Enemy Hit Breakable")
+				body.break_object(1)
 
 
 func _on_slow_timer_timeout() -> void:
@@ -59,6 +64,11 @@ func _on_slow_timer_timeout() -> void:
 	delete_enemy(0)
 
 func update_sound_settings():
-	GlobalVariables.update_sound_settings()
-	enemy_bounce_sound.volume_linear = (enemy_bounce_sound.volume_linear/100) * GlobalVariables.master_vol
-	enemy_bounce_sound.volume_linear = (enemy_bounce_sound.volume_linear/100) * GlobalVariables.sound_effects_vol
+	print("Sound effect volume set to: " + str(GlobalVariables.sound_effects_vol))
+	enemy_bounce_sound.volume_linear = GlobalVariables.master_vol * GlobalVariables.sound_effects_vol
+	print("Updating enemy volume to " + str(enemy_bounce_sound.volume_linear))
+
+
+func _on_entrance_timer_timeout() -> void:
+	print("Entered screen, turning on collision sound")
+	entering_screen = false

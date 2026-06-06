@@ -18,6 +18,7 @@ var ball : Node2D
 @export var is_final_level : bool = false
 #@export var ball_pos = Vector2(0,0)
 
+signal sound_change
 
 func _ready() -> void:
 	#Get current system time for debug log messages
@@ -35,9 +36,7 @@ func _ready() -> void:
 	ConfigFileHandler.save_level_avail("level_" + str(GlobalVariables.current_level_num), true)
 	
 	#Set music volume
-	ConfigFileHandler.load_sound_settings()
-	level_music.volume_linear = (level_music.volume_linear/100) * GlobalVariables.master_vol
-	level_music.volume_linear = (level_music.volume_linear/100) * GlobalVariables.music_vol
+	update_sound_settings()
 	
 	#Set initial level variables
 	var breakables_in_level = breakables.get_child_count()
@@ -71,6 +70,8 @@ func _process(_delta):
 	elif Input.is_action_just_pressed("Launch") and not GlobalVariables.ball_launched:
 		ball_launch()
 	
+	#Set music volume
+	update_sound_settings()
 
 func PauseMenu():
 	if not get_tree().paused:
@@ -80,8 +81,9 @@ func PauseMenu():
 	else:
 		GlobalVariables.resume_game()
 		pause_menu.visible = false
-		update_sound_settings()
+		sound_change.emit()
 		print("Unpause from key press")
+		print("Signal sound change")
 
 func _on_breakables_child_exiting_tree(node: Node) -> void:
 	#If the level isn't being reset
@@ -92,6 +94,7 @@ func _on_breakables_child_exiting_tree(node: Node) -> void:
 		var coin = coin_obj.instantiate()
 		coin.global_position = pos
 		objects_node.add_child(coin)
+		sound_change.connect(coin.update_sound_settings)
 		print("Coin created")
 		
 		#Get current system time for debug log messages
@@ -159,6 +162,7 @@ func ball_init():
 	ball = ball_obj.instantiate()
 	ball.set_level($".")
 	bouncypult.get_bouncypult().add_child(ball)
+	sound_change.connect(ball.update_sound_settings)
 	GlobalVariables.reloading = false
 	ball.freeze()
 
@@ -172,6 +176,7 @@ func ball_launch():
 func spawn_enemy():
 	var enemy = enemy_obj.instantiate()
 	objects_node.add_child(enemy)
+	sound_change.connect(enemy.update_sound_settings)
 	print("Enemy created")
 
 
@@ -179,6 +184,7 @@ func _on_level_music_finished() -> void:
 	level_music.play()
 
 func update_sound_settings():
-	GlobalVariables.update_sound_settings()
-	level_music.volume_linear = (level_music.volume/100) * GlobalVariables.master_vol
-	level_music.volume_linear = (level_music.volume/100) * GlobalVariables.music_vol
+	print("Music Vol set to: " + str(GlobalVariables.music_vol))
+	print("Master volume set to: " + str(GlobalVariables.master_vol))
+	level_music.volume_linear = GlobalVariables.master_vol * GlobalVariables.music_vol
+	print("Updating level sound to " + str(level_music.volume_linear))

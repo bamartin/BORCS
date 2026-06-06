@@ -45,3 +45,7 @@ func freeze():
 
 func unfreeze():
 	ball.freeze = false
+
+func update_sound_settings():
+	if ball:
+		ball.update_sound_settings()

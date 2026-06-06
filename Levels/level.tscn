@@ -151,6 +151,7 @@ script = ExtResource("5_2qtp4")
 stream = ExtResource("7_8a2b0")
 autoplay = true
 
+[connection signal="sound_change" from="." to="." method="update_sound_settings"]
 [connection signal="body_entered" from="Objects/Floor/Floor" to="." method="_on_floor_body_entered"]
 [connection signal="child_exiting_tree" from="Objects/Breakables" to="." method="_on_breakables_child_exiting_tree"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="spawn_enemy"]

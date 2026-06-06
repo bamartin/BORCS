@@ -68,6 +68,6 @@ func _on_reset_timer_timeout() -> void:
 		get_parent().ball_reset()
 
 func update_sound_settings():
-	GlobalVariables.update_sound_settings()
-	bounce_audio.volume_linear = (bounce_audio.volume_linear/100) * GlobalVariables.master_vol
-	bounce_audio.volume_linear = (bounce_audio.volume_linear/100) * GlobalVariables.sound_effects_vol
+	print("Sound effect volume set to: " + str(GlobalVariables.sound_effects_vol))
+	bounce_audio.volume_linear = GlobalVariables.master_vol * GlobalVariables.sound_effects_vol
+	print("Updating ball sound to " + str(bounce_audio.volume_linear))

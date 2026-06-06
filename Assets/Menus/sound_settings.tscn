@@ -62,7 +62,9 @@ anchor_right = 1.0
 offset_top = 30.0
 offset_bottom = 46.0
 grow_horizontal = 2
-value = 100.0
+max_value = 1.0
+step = 0.001
+value = 1.0
 
 [node name="SoundEffectsVol_lbl" type="Label" parent="SoundSetBackground" unique_id=311556061]
 layout_mode = 1
@@ -85,7 +87,9 @@ anchor_right = 1.0
 offset_top = 30.0
 offset_bottom = 46.0
 grow_horizontal = 2
-value = 100.0
+max_value = 1.0
+step = 0.001
+value = 1.0
 
 [node name="MusicVol_lbl" type="Label" parent="SoundSetBackground" unique_id=516851963]
 layout_mode = 1
@@ -108,7 +112,9 @@ anchor_right = 1.0
 offset_top = 30.0
 offset_bottom = 46.0
 grow_horizontal = 2
-value = 100.0
+max_value = 1.0
+step = 0.001
+value = 1.0
 
 [node name="Back" type="Button" parent="SoundSetBackground" unique_id=1698007138]
 layout_mode = 1

@@ -34,3 +34,7 @@ func get_max_speed():
 
 func set_max_speed(speed):
 	enemy.max_speed = speed
+
+func update_sound_settings():
+	if enemy:
+		enemy.update_sound_settings()

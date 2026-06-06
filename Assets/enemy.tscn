@@ -42,5 +42,11 @@ stream = ExtResource("5_w431v")
 wait_time = 3.0
 one_shot = true
 
+[node name="EntranceTimer" type="Timer" parent="." unique_id=1882130343]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="Enemy" to="Enemy" method="_on_body_entered"]
 [connection signal="timeout" from="SlowTimer" to="Enemy" method="_on_slow_timer_timeout"]
+[connection signal="timeout" from="EntranceTimer" to="Enemy" method="_on_entrance_timer_timeout"]

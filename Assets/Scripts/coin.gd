@@ -37,4 +37,5 @@ func _on_slow_timer_timeout() -> void:
 	delete_coin()
 
 func update_sound_settings():
-	GlobalVariables.update_sound_settings()
+	pass
+	#print("Updating coin sound to " + str(bounce_audio.volume_linear))

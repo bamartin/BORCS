@@ -5,9 +5,9 @@ extends Node
 #Config var
 var mouse_moves_bouncypult: bool
 var active_save = ""
-var master_vol = 100
-var sound_effects_vol = 100
-var music_vol = 100
+var master_vol = 1
+var sound_effects_vol = 1
+var music_vol = 1
 
 #Player stat var
 var player_score = 0
