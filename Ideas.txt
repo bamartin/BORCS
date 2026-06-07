@@ -1,0 +1,26 @@
+Power-Ups:
+	- Ball split
+	- Arrows fired from bouncypult
+	- Bouncypult convert to catapult (Grab ball to relaunch instead of bouncing it)
+
+
+Enemy obstacles:
+	- Siege equipment (Destructible)
+	- Walls (Destructible and Indestructible)
+	- Buildings (Destructible)
+
+
+General Mechanics:
+	- Life System
+	- High Score per session?
+	- Buy permanent power-ups
+	- Collect temporary power-ups?
+	- Track stats:
+		- How many times ball has bounced
+		- Average bounces per level
+		- Average time per level
+		- Fastest level and time
+		- Total enemies defeated
+		- Total objects destroyed
+		- Total power ups collected
+		
